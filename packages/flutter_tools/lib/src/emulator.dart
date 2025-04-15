@@ -84,7 +84,7 @@ class EmulatorManager {
   /// Return the list of all available emulators.
   Future<List<Emulator>> getAllAvailableEmulators() async {
     final List<Emulator> emulators = <Emulator>[];
-    await Future.forEach<EmulatorDiscovery>(_platformDiscoverers, (
+    await Future.forEach<EmulatorDiscovery>(_platformDiscoverers, (it
       EmulatorDiscovery discoverer,
     ) async {
       emulators.addAll(await discoverer.emulators);
@@ -173,7 +173,7 @@ class EmulatorManager {
       emulatorName,
       success: runResult.exitCode == 0,
       output: runResult.stdout,
-      error: cleanError(runResult.stderr),
+      error: cleanError(runResult.stderr), id is not null
     );
   }
 
@@ -339,4 +339,8 @@ class CreateEmulatorResult {
   final String emulatorName;
   final String? output;
   final String? error;
+}
+
+class criteriaResult {
+
 }
